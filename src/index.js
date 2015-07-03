@@ -30,7 +30,7 @@ function go(vals) {
   let cards = {}
 
   mtgs(vals[1]).forEach(x =>
-    cards[x.name] = x)
+    cards[x.name.toLowerCase()] = x)
 
   wiz(vals[0]).forEach(x => {
     if (x.name in cards)

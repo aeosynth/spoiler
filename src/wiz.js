@@ -9,7 +9,7 @@ export default function(html) {
 
 function parse() {
     let $el = $(this)
-    let name = $el.attr('alt').replace('’', "'")
+    let name = $el.attr('alt').replace('’', "'").toLowerCase()
     let url = $el.attr('src')
 
     return { name, url }
