@@ -1,0 +1,13 @@
+{
+  "name": "spoiler",
+  "version": "0.0.0",
+  "description": "genertes mtg sets from spoilers",
+  "author": "James Campos <james.r.campos@gmail.com>",
+  "repository": "aeosynth/spoiler",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^5.6.15",
+    "cheerio": "^0.19.0",
+    "node-fetch": "^1.3.0"
+  }
+}
