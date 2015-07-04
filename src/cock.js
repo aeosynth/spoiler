@@ -22,9 +22,9 @@ ${colors}
     return ret
   }
 
-  return `\
+  return ['cod', `\
 <cockatrice_carddatabase version="3">
   <cards>${doCards()}
   </cards>
-</cockatrice_carddatabase>`
+</cockatrice_carddatabase>`]
 }

@@ -2,6 +2,8 @@ import fs from 'fs'
 import fetch from 'node-fetch'
 
 import cock from './cock'
+import mws from './mws'
+
 import mtgs from './mtgs'
 import wiz from './wiz'
 
@@ -49,6 +51,13 @@ function go(vals) {
 }
 
 function write(cards) {
-  let text = cock(cards, CODE)
-  fs.writeFileSync(`${CODE}.xml`, text)
+  try {
+    fs.mkdirSync('data')
+  } catch(err) {}
+
+  let [ext, text] = cock(cards, CODE)
+  fs.writeFileSync(`data/${CODE}.${ext}`, text)
+
+  ;[ext, text] = mws(cards)
+  fs.writeFileSync(`data/${CODE}.${ext}`, text)
 }
