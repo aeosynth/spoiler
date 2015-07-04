@@ -34,10 +34,12 @@ function parse() {
   let cmc = (parseInt(cost) || 0) + color.length
   let colors = color.replace(/(.)\1+/g, '$1').split('')
 
+  let pt = $el.find('.t-spoiler-stat').text()
+
   let text = $el
     .find('.t-spoiler-ability')
     .text()
     .trim()
 
-  return { cmc, colors, cost, name, rarity, text, type }
+  return { cmc, colors, cost, name, pt, rarity, text, type }
 }

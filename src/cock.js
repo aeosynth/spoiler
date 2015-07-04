@@ -5,13 +5,16 @@ export default function(cards, code) {
       let card = cards[name]
       let colors = card.colors.map(color => `\
       <color>${color}</color>`).join('\n')
+      let cost = card.cost ? `<manacost>${card.cost}</manacost>` : ''
+      let pt = card.pt ? `<pt>${card.pt}</pt>` : ''
 
       ret += `
     <card>
       <name>${card.name}</name>>
       <set picURL="${card.url}">${code}</set>
 ${colors}
-      <manacost>${card.cost}</manacost>
+      ${cost}
+      ${pt}
       <type>${card.type}</type>
       <text>${card.text}</text>
     </card>`
