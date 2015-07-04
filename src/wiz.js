@@ -1,4 +1,5 @@
 import cheerio from 'cheerio'
+import _ from './_'
 
 let $
 
@@ -9,7 +10,7 @@ export default function(html) {
 
 function parse() {
     let $el = $(this)
-    let name = $el.attr('alt').replace('’', "'").toLowerCase()
+    let name = _.ascii($el.attr('alt')).toLowerCase()
     let url = $el.attr('src')
 
     return { name, url }

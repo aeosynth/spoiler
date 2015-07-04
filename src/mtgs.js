@@ -1,4 +1,5 @@
 import cheerio from 'cheerio'
+import _ from './_'
 
 let $
 
@@ -18,7 +19,7 @@ function parse() {
   if (rarity === 'land' || rarity === 'unknown')
     return
 
-  let name = $el.attr('id')
+  let name = _.ascii($el.attr('id'))
 
   let type = $el
     .find('.t-spoiler-type')
