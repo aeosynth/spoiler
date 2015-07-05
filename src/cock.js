@@ -7,10 +7,18 @@ export default function(cards, code) {
       <color>${color}</color>`).join('\n')
       let cost = card.cost ? `<manacost>${card.cost}</manacost>` : ''
 
+      let {type} = card
+
       // https://github.com/aeosynth/spoiler/issues/1
-      let pt = card.pt && !card.type.startsWith('Planeswalker')
+      let pt = card.pt && !type.startsWith('Planeswalker')
         ? `<pt>${card.pt}</pt>`
         : ''
+
+      let tablerow
+        = type.includes('Creature') ? 2
+        : type.includes('Land') ? 0
+        : /Instant|Sorcery/.test(type) ? 3
+        : 1
 
       ret += `
     <card>
@@ -20,6 +28,7 @@ ${colors}
       ${cost}
       ${pt}
       <type>${card.type}</type>
+      <tablerow>${tablerow}</tablerow>
       <text>${card.text}</text>
     </card>`
     }
