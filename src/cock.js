@@ -14,7 +14,7 @@ export default function(cards, code) {
 
       ret += `
     <card>
-      <name>${card.name}</name>>
+      <name>${card.name}</name>
       <set picURL="${card.url}">${code}</set>
 ${colors}
       ${cost}
