@@ -6,6 +6,9 @@ export default function(cards, code) {
       let colors = card.colors.map(color => `\
       <color>${color}</color>`).join('\n')
       let cost = card.cost ? `<manacost>${card.cost}</manacost>` : ''
+
+      if (card.type.startsWith('Planeswalker'))
+        card.pt = null
       let pt = card.pt ? `<pt>${card.pt}</pt>` : ''
 
       ret += `
