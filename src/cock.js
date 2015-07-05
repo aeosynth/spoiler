@@ -7,9 +7,10 @@ export default function(cards, code) {
       <color>${color}</color>`).join('\n')
       let cost = card.cost ? `<manacost>${card.cost}</manacost>` : ''
 
-      if (card.type.startsWith('Planeswalker'))
-        card.pt = null
-      let pt = card.pt ? `<pt>${card.pt}</pt>` : ''
+      // https://github.com/aeosynth/spoiler/issues/1
+      let pt = card.pt && !card.type.startsWith('Planeswalker')
+        ? `<pt>${card.pt}</pt>`
+        : ''
 
       ret += `
     <card>
