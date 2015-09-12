@@ -12,6 +12,7 @@ function parse(desc) {
     .replace(/\r/g, '')
     .replace(/&amp;/g, '&')
     .replace(/&#x27;/g, "'")
+    .replace(/&bull;/g, '*')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
