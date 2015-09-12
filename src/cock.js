@@ -35,7 +35,7 @@ ${colors}
     return ret
   }
 
-  return ['cod', `\
+  return ['xml', `\
 <cockatrice_carddatabase version="3">
   <cards>${doCards()}
   </cards>
