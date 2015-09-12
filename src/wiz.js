@@ -5,7 +5,7 @@ let $
 
 export default function(html) {
   $ = cheerio.load(html)
-  return $('div[align] img').map(parse).get()
+  return $('p[align] img').map(parse).get()
 }
 
 function parse() {

@@ -1,46 +1,41 @@
-import cheerio from 'cheerio'
+import {parseString} from 'xml2js'
 import _ from './_'
 
-let $
-
-export default function(html) {
-  $ = cheerio.load(html, { normalizeWhitespace: true })
-  return $('.t-spoiler').map(parse).get()
+export default function(xml, cb) {
+  parseString(xml, (err, result) =>
+    cb(result.rss.channel[0].item.map(x => parse(x.description[0]))))
 }
 
-function parse() {
-  let $el = $(this)
+function parse(desc) {
+  let tmp = {}
+  desc
+    .replace(/\r/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&#x27;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .match(/\n[^]+?<br>/g)
+    .forEach(s => {
+      let match = s
+        .replace(/\<.+?\>/g, '')
+        .match(/(.+?): ([^]+)/)
 
-  let rarity = $el
-    .find('.t-spoiler-rarity span')
-    .attr('class')
-    .match(/\w+$/)[0]
+      if (!match)
+        return
 
-  if (rarity === 'land' || rarity === 'unknown')
-    return
+      let [, key, val] = match
+      tmp[key.toLowerCase()] = val
+    })
 
-  let name = _.ascii($el.attr('id'))
-
-  let type = $el
-    .find('.t-spoiler-type')
-    .text()
-
-  let cost = $el
-    .find('.t-spoiler-mana')
-    .text()
-    .replace(/\s+/g, '')
+  let {name, cost, type, rarity} = tmp
+  cost = cost || ''
+  let text = tmp['rules text']
+  let pt = tmp['pow/tgh']
 
   let color = cost.match(/\D*$/)[0].replace(/X/g, '')
-
-  let cmc = (parseInt(cost) || 0) + color.length
+  let cmc = (parseInt(cost) | 0) + color.length
   let colors = color.replace(/(.)\1+/g, '$1').split('')
-
-  let pt = $el.find('.t-spoiler-stat').text()
-
-  let text = $el
-    .find('.t-spoiler-ability')
-    .text()
-    .trim()
 
   return { cmc, colors, cost, name, pt, rarity, text, type }
 }
