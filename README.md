@@ -1,6 +1,6 @@
 # spoiler
 
-install [node.js] or [io.js]
+install [node.js]
 
     npm install
     node app.js
@@ -15,4 +15,3 @@ current output:
   - [mws](https://gist.github.com/aeosynth/1226701708fc3c765d25)
 
 [node.js]: https://nodejs.org/
-[io.js]: https://iojs.org/
