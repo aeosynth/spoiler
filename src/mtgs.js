@@ -31,12 +31,13 @@ function parse(desc) {
 
   let {name, cost, type, rarity} = tmp
   cost = cost || ''
-  let text = tmp['rules text']
+  let num = tmp['set number'].slice(1)
   let pt = tmp['pow/tgh']
+  let text = tmp['rules text']
 
   let color = cost.match(/\D*$/)[0].replace(/X/g, '')
   let cmc = (parseInt(cost) | 0) + color.length
   let colors = color.replace(/(.)\1+/g, '$1').split('')
 
-  return { cmc, colors, cost, name, pt, rarity, text, type }
+  return { cmc, colors, cost, name, num, pt, rarity, text, type }
 }
