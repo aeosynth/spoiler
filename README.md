@@ -6,8 +6,8 @@ install [node.js]
     node app.js
 
 will generate sets for cockatrice and mws. place the generated file in the
-appropriate location - for cockatrice, the `customsets` directory.
-note that spoilers may have errors.
+appropriate location - for cockatrice, the `customsets` directory (card database
+-> open custom sets folder). note that spoilers may have errors.
 
 current output:
 
