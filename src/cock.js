@@ -2,19 +2,19 @@ export default function(cards, code) {
   function doCards() {
     let ret = ''
     for (let name in cards) {
-      let card = cards[name]
-      let colors = card.colors.map(color => `\
+      const card = cards[name]
+      const colors = card.colors.map(color => `\
       <color>${color}</color>`).join('\n')
-      let cost = card.cost ? `<manacost>${card.cost}</manacost>` : ''
+      const cost = card.cost ? `<manacost>${card.cost}</manacost>` : ''
 
-      let {type} = card
+      const {type} = card
 
       // https://github.com/aeosynth/spoiler/issues/1
-      let pt = card.pt && !type.startsWith('Planeswalker')
+      const pt = card.pt && !type.startsWith('Planeswalker')
         ? `<pt>${card.pt}</pt>`
         : ''
 
-      let tablerow
+      const tablerow
         = type.includes('Creature') ? 2
         : type.includes('Land') ? 0
         : /Instant|Sorcery/.test(type) ? 3

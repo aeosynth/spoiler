@@ -7,7 +7,7 @@ import mws from './mws'
 import mtgs from './mtgs'
 import wiz from './wiz'
 
-let {CODE, cardsURL, imagesURL} = config
+const {CODE, cardsURL, imagesURL} = config
 
 function ok(res) {
   if (res.ok)
@@ -15,7 +15,7 @@ function ok(res) {
   throw `fetch error: ${res.status} ${res.statusText}`
 }
 
-let promises = [
+const promises = [
   fetch(imagesURL).then(ok),
   fetch(cardsURL).then(ok)
 ]
@@ -26,7 +26,7 @@ Promise
   .catch(console.log)
 
 function go(vals) {
-  let cards = {}
+  const cards = {}
 
   mtgs(vals[1], xs => {
     xs.forEach(x =>

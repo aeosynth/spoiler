@@ -9,9 +9,9 @@ export default function(html) {
 }
 
 function parse() {
-    let $el = $(this)
-    let name = _.ascii($el.attr('alt')).toLowerCase()
-    let url = $el.attr('src')
+    const $el = $(this)
+    const name = _.ascii($el.attr('alt')).toLowerCase()
+    const url = $el.attr('src')
 
     return { name, url }
 }

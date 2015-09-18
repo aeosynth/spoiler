@@ -7,7 +7,7 @@ export default function(xml, cb) {
 }
 
 function parse(desc) {
-  let tmp = {}
+  const tmp = {}
   desc
     .replace(/\r/g, '')
     .replace(/&amp;/g, '&')
@@ -18,26 +18,26 @@ function parse(desc) {
     .replace(/&quot;/g, '"')
     .match(/\n[^]+?<br>/g)
     .forEach(s => {
-      let match = s
+      const match = s
         .replace(/\<.+?\>/g, '')
         .match(/(.+?): ([^]+)/)
 
       if (!match)
         return
 
-      let [, key, val] = match
+      const [, key, val] = match
       tmp[key.toLowerCase()] = val.trim()
     })
 
-  let {name, cost, type, rarity} = tmp
-  cost = cost || ''
-  let num = tmp['set number'].slice(1)
-  let pt = tmp['pow/tgh']
-  let text = tmp['rules text']
+  const {name, type, rarity} = tmp
+  const cost = tmp.cost || ''
+  const num = tmp['set number'].slice(1)
+  const pt = tmp['pow/tgh']
+  const text = tmp['rules text']
 
-  let color = cost.match(/\D*$/)[0].replace(/X/g, '')
-  let cmc = (parseInt(cost) | 0) + color.length
-  let colors = /^Devoid/.test(text)
+  const color = cost.match(/\D*$/)[0].replace(/X/g, '')
+  const cmc = (parseInt(cost) | 0) + color.length
+  const colors = /^Devoid/.test(text)
     ? []
     : color.replace(/(.)\1+/g, '$1').split('')
 

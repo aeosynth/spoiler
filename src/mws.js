@@ -1,10 +1,10 @@
 export default function(cards, code) {
   let ret = ''
   for (let name in cards) {
-    let card = cards[name]
+    const card = cards[name]
 
-    let {colors} = card
-    let color =
+    const {colors} = card
+    const color =
       colors.length === 1 ? colors[0] :
       colors.length === 0 ? 'Art' :
       'Gld'
