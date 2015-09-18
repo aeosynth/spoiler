@@ -26,7 +26,7 @@ function parse(desc) {
         return
 
       let [, key, val] = match
-      tmp[key.toLowerCase()] = val
+      tmp[key.toLowerCase()] = val.trim()
     })
 
   let {name, cost, type, rarity} = tmp
