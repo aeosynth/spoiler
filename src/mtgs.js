@@ -1,14 +1,13 @@
-import {parseString} from 'xml2js'
+import $ from 'cheerio'
 import _ from './_'
 
-export default function(xml, cb) {
-  parseString(xml, (err, result) =>
-    cb(result.rss.channel[0].item.map(x => parse(x.description[0]))))
+export default function(xml) {
+  return $('item description', xml).map(parse).get()
 }
 
-function parse(desc) {
+function parse() {
   const tmp = {}
-  desc
+  $(this).text()
     .replace(/\r/g, '')
     .replace(/&amp;/g, '&')
     .replace(/&#x27;/g, "'")

@@ -28,25 +28,23 @@ Promise
 function go(vals) {
   const cards = {}
 
-  mtgs(vals[1], xs => {
-    xs.forEach(x =>
-      cards[x.name.toLowerCase()] = x)
+  mtgs(vals[1]).forEach(x =>
+    cards[x.name.toLowerCase()] = x)
 
-    wiz(vals[0]).forEach(x => {
-      if (x.name in cards)
-        cards[x.name].url = x.url
-      else
-        console.log('text not found:', x.name)
-    })
-
-    for (let name in cards)
-      if (!cards[name].url) {
-        console.log('image not found:', name)
-        delete cards[name]
-      }
-
-    write(cards)
+  wiz(vals[0]).forEach(x => {
+    if (x.name in cards)
+      cards[x.name].url = x.url
+    else
+      console.log('text not found:', x.name)
   })
+
+  for (let name in cards)
+    if (!cards[name].url) {
+      console.log('image not found:', name)
+      delete cards[name]
+    }
+
+  write(cards)
 }
 
 function write(cards) {
