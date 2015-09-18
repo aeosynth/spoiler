@@ -37,7 +37,9 @@ function parse(desc) {
 
   let color = cost.match(/\D*$/)[0].replace(/X/g, '')
   let cmc = (parseInt(cost) | 0) + color.length
-  let colors = color.replace(/(.)\1+/g, '$1').split('')
+  let colors = /^Devoid/.test(text)
+    ? []
+    : color.replace(/(.)\1+/g, '$1').split('')
 
   return { cmc, colors, cost, name, num, pt, rarity, text, type }
 }
