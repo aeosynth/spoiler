@@ -8,7 +8,7 @@ export default {
       case 'í': return 'i'
       case 'ö': return 'o'
       case 'ú': case 'û': return 'u'
-      case '’': return '\''
+      case '’': return "'"
       }
     })
   }

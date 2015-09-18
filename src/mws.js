@@ -8,7 +8,7 @@ export default function(cards, code) {
       colors.length === 1 ? colors[0] :
       colors.length === 0 ? 'Art' :
       'Gld'
-    
+
     ret += `
 Card Name: ${card.name}
 Card Color: ${color}
