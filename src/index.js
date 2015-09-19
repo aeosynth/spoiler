@@ -44,7 +44,13 @@ function go(vals) {
       delete cards[name]
     }
 
+  fix(cards)
   write(cards)
+}
+
+function fix(cards) {
+  cards['grip of desolation'].type = 'Instant'
+  cards['ruin processor'].rarity = 'Common'
 }
 
 function write(cards) {
