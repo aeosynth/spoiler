@@ -28,9 +28,10 @@ function parse() {
       tmp[key.toLowerCase()] = val.trim()
     })
 
-  const {name, type, rarity} = tmp
+  const {name, rarity} = tmp
   const cost = tmp.cost || ''
   const num = tmp['set number'].slice(1)
+  const type = tmp.type.replace('-', '—')
   const pt = type.includes('Creature')
     ? tmp['pow/tgh'] || ''
     : ''
