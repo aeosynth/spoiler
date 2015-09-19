@@ -6,6 +6,7 @@ export default function(cards, code) {
 
       const cost = card.cost ? `<manacost>${card.cost}</manacost>` : ''
       const pt = card.pt ? `<pt>${card.pt}</pt>` : ''
+      const text = card.text ? `<text>${card.text}</text>` : ''
 
       const {type} = card
       const tablerow
@@ -26,7 +27,7 @@ ${colors}
       ${pt}
       <type>${card.type}</type>
       <tablerow>${tablerow}</tablerow>
-      <text>${card.text}</text>
+      ${text}
     </card>`
     }
     return ret

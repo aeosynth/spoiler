@@ -19,7 +19,7 @@ function parse() {
     .forEach(s => {
       const match = s
         .replace(/\<.+?\>/g, '')
-        .match(/(.+?): ([^]+)/)
+        .match(/(.+?): ([^]*)/)
 
       if (!match)
         return
@@ -28,12 +28,11 @@ function parse() {
       tmp[key.toLowerCase()] = val.trim()
     })
 
-  const {name, rarity} = tmp
-  const cost = tmp.cost || ''
+  const {cost, name, rarity} = tmp
   const num = tmp['set number'].slice(1)
   const type = tmp.type.replace('-', '—')
   const pt = type.includes('Creature')
-    ? tmp['pow/tgh'] || ''
+    ? tmp['pow/tgh']
     : ''
   const text = tmp['rules text']
 
