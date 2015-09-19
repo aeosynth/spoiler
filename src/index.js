@@ -57,4 +57,8 @@ function write(cards) {
 
   ;[ext, text] = mws(cards)
   fs.writeFileSync(`data/${CODE}.${ext}`, text)
+
+  const cardsArr = Object.keys(cards).map(x => cards[x])
+  text = JSON.stringify({ cards: cardsArr, code: CODE }, null, 2)
+  fs.writeFileSync(`data/${CODE}.json`, text)
 }
