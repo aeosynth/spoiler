@@ -14,7 +14,7 @@ Card Name: ${card.name}
 Card Color: ${color}
 Mana Cost: ${card.cost}
 Type & Class: ${card.type}
-Pow/Tou: ${card.pt || ''}
+Pow/Tou: ${card.pt}
 Card Text: ${card.text}
 Flavor Text:
 Artist:

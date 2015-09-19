@@ -31,7 +31,9 @@ function parse() {
   const {name, type, rarity} = tmp
   const cost = tmp.cost || ''
   const num = tmp['set number'].slice(1)
-  const pt = tmp['pow/tgh']
+  const pt = type.includes('Creature')
+    ? tmp['pow/tgh'] || ''
+    : ''
   const text = tmp['rules text']
 
   const color = cost.match(/\D*$/)[0].replace(/X/g, '')
