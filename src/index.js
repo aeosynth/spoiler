@@ -15,15 +15,11 @@ function ok(res) {
   throw `fetch error: ${res.status} ${res.statusText}`
 }
 
-const promises = [
-  fetch(imagesURL).then(ok),
-  fetch(cardsURL).then(ok)
-]
+const promises = [imagesURL, cardsURL].map(url => fetch(url).then(ok))
 
 Promise
   .all(promises)
-  .then(go)
-  .catch(console.log)
+  .then(go, console.log)
 
 function go(vals) {
   const cards = {}
