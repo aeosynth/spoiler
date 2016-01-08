@@ -36,8 +36,11 @@ function parse() {
     : ''
   const text = tmp['rules text'] || ''
 
-  const color = cost.match(/\D*$/)[0].replace(/X/g, '')
-  const cmc = (parseInt(cost) | 0) + color.length
+  const generic = parseInt(cost) | 0
+  const specific = cost.match(/\D*$/)[0].replace(/X/g, '')
+
+  const cmc = generic + specific.length
+  const color = specific.replace(/C/g, '')
   const cid = color.replace(/(.)\1+/g, '$1').split('')
   const colors = text.startsWith('Devoid') ? [] : cid
 
