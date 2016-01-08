@@ -45,8 +45,6 @@ function go(vals) {
 }
 
 function fix(cards) {
-  cards['grip of desolation'].type = 'Instant'
-  cards['ruin processor'].rarity = 'Common'
 }
 
 function write(cards) {
