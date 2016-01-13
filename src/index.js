@@ -45,6 +45,7 @@ function go(vals) {
 }
 
 function fix(cards) {
+  cards['brute strength'].rarity = 'Common'
 }
 
 function write(cards) {
